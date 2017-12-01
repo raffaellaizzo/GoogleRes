@@ -64,9 +64,9 @@ public class GoogleRes {
 
 		logger.info("Inizio...");
 
-		String citta = "Picerno";
-//		String key = "AIzaSyD1ezQ62XUDXri4hvQnuUElCThtpcSypPY";
-		String key = "AIzaSyCJHdNtJE3fSBe0QgfC8-ho6swNlWJ0ciw";
+		String citta = "Matera";
+		String key = "AIzaSyD1ezQ62XUDXri4hvQnuUElCThtpcSypPY";
+//		String key = "AIzaSyCJHdNtJE3fSBe0QgfC8-ho6swNlWJ0ciw";
 		String url = "https://maps.googleapis.com/maps/api/place/textsearch/xml?query=restaurants+in+"+citta+"&key="+key;
 		int rowCount = 0;
 		File f = new File("C:\\Users\\r.izzo\\Desktop\\MAIL", "mail_"+citta+".xls");
@@ -110,6 +110,8 @@ public class GoogleRes {
 						String name = page2.getElementsByTagName("name").get(0).getFirstChild().toString();
 						String mail = "";
 
+						BeanRes bean = new BeanRes(mail,name,""); 
+						
 						for (DomElement id2 : id2s) {
 							String url3 = id2.getFirstChild().toString();
 							logger.info(url3);
@@ -124,11 +126,14 @@ public class GoogleRes {
 							}														
 
 							System.out.println(!mail.trim().equals("") ? "Tovata: " + mail: "Non Trovata");
-							BeanRes bean = new BeanRes(mail,name,url3); 
-							lista.add(bean);
+//							BeanRes bean = new BeanRes(mail,name,url3); 
+//							lista.add(bean);
+							bean.setWebsite(url3);
+							bean.setMail(mail);
 
 						}
 
+						lista.add(bean);
 					}
 					catch (Exception e) {
 						logger.error(e);
@@ -201,6 +206,7 @@ public class GoogleRes {
 
 
 		finally {
+			System.out.println("Fine...");
 			LogHelper.info("Fine...");
 			try { out.close(); } catch (Exception e) { }
 		}
