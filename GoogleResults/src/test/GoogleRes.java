@@ -98,7 +98,6 @@ public class GoogleRes {
 
 				for (DomElement id : ids) {
 
-
 					try {
 
 						String url2 = "https://maps.googleapis.com/maps/api/place/details/xml?placeid="+id.asText()+"&key="+key+"&pagetoken="+ next_page;
