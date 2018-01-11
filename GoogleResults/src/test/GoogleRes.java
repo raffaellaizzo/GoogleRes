@@ -63,7 +63,7 @@ public class GoogleRes {
 		//		webClient.getOptions().setProxyConfig(proxyConfig);
 
 		logger.info("Inizio...");
-
+		
 		String citta = "Matera";
 		String key = "AIzaSyD1ezQ62XUDXri4hvQnuUElCThtpcSypPY";
 //		String key = "AIzaSyCJHdNtJE3fSBe0QgfC8-ho6swNlWJ0ciw";

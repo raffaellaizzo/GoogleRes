@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashMap;
@@ -13,8 +12,7 @@ import java.util.Map.Entry;
 import java.util.Properties;
 import java.util.Set;
 
-import javax.mail.Authenticator;
-import javax.mail.BodyPart;
+import javax.activation.MimetypesFileTypeMap;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.Multipart;
@@ -86,9 +84,14 @@ public class InvioMail {
 	}
 
 	private void createMessage(String path, InvioMail sender, MimeMessage message) throws MessagingException {
-		message.setSubject("oggetto");
+		message.setSubject("Delitaly Discount!");
 
-		BodyPart messageBodyPart = new MimeBodyPart();
+		MimeBodyPart messageBodyPart = new MimeBodyPart();
+		MimetypesFileTypeMap mimeType = new MimetypesFileTypeMap();
+		mimeType.addMimeTypes("image/png png PNG");
+		mimeType.addMimeTypes("image/jpeg jpeg JPEG");
+		mimeType.addMimeTypes("text/html html HTML");
+		mimeType.addMimeTypes("image/jpg jpg JPG");
 		// HTML mail content
 		// Set key values
 		Map<String, String> input = new HashMap<String, String>();
@@ -96,14 +99,31 @@ public class InvioMail {
 		input.put("Topic", "HTML Template for Email");
 		input.put("Content In", "English");
 
+		// ContentID is used by both parts
+	    String cid = ContentIdGenerator.getContentId();
+
+
 		String htmlText = sender.readEmailFromHtml(path + "\\email.html", input);
 		messageBodyPart.setContent(htmlText, "text/html");
-
 		Multipart multipart = new MimeMultipart();
 		multipart.addBodyPart(messageBodyPart);
+	    // Image part
+		MimeBodyPart imageBodyPart = new MimeBodyPart();
+	    try {
+	    	imageBodyPart.attachFile("salsiccia.png");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
+	    imageBodyPart.setContentID("<" + cid + ">");
+	    imageBodyPart.setDisposition(MimeBodyPart.INLINE);
+	    multipart.addBodyPart(imageBodyPart);
+		
 		message.setContent(multipart);
 	}
+	
+	
 
 	private MimeMessage configureEmail() throws MessagingException, AddressException {
 		Properties props = new Properties();
