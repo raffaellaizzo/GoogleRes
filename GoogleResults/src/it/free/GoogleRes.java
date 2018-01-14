@@ -1,4 +1,4 @@
-package test;
+package it.free;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -64,12 +64,12 @@ public class GoogleRes {
 
 		logger.info("Inizio...");
 		
-		String citta = "Matera";
+		String citta = "Berlin";
 		String key = "AIzaSyD1ezQ62XUDXri4hvQnuUElCThtpcSypPY";
 //		String key = "AIzaSyCJHdNtJE3fSBe0QgfC8-ho6swNlWJ0ciw";
-		String url = "https://maps.googleapis.com/maps/api/place/textsearch/xml?query=restaurants+in+"+citta+"&key="+key;
+		String url = "https://maps.googleapis.com/maps/api/place/textsearch/xml?query=italian restaurants+in+"+citta+"&key="+key;
 		int rowCount = 0;
-		File f = new File("C:\\Users\\r.izzo\\Desktop\\MAIL", "mail_"+citta+".xls");
+		File f = new File("C:\\Users\\Rocco\\Desktop\\Lavoro\\Food estero\\IEFOOD\\Email\\Contatti", "mail_"+citta+".xls");
 		FileOutputStream out = null;
 
 		try {
