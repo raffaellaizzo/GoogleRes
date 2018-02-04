@@ -64,7 +64,7 @@ public class GoogleRes {
 
 		logger.info("Inizio...");
 		
-		String citta = "Berlin";
+		String citta = "Monaco";//"Brema";//"Stoccarda";//Berlin";
 		String key = "AIzaSyD1ezQ62XUDXri4hvQnuUElCThtpcSypPY";
 //		String key = "AIzaSyCJHdNtJE3fSBe0QgfC8-ho6swNlWJ0ciw";
 		String url = "https://maps.googleapis.com/maps/api/place/textsearch/xml?query=italian restaurants+in+"+citta+"&key="+key;

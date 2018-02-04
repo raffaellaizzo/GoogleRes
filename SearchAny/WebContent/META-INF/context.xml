@@ -1,0 +1,5 @@
+<Context>
+    <ResourceLink name="jdbc/JCGDelitalyDB" 
+				global="jdbc/JCGDelitalyDB" 
+				type="javax.sql.DataSource"/>
+</Context>

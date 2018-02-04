@@ -54,7 +54,7 @@ public class InvioMail {
 
 			//message.setRecipients(Message.RecipientType.TO, "figliuolor@gmail.com");
 			//Transport.send(message);
-			File contactsFile = new File(path+"\\Contatti"+"\\mail_berlin.xls");
+			File contactsFile = new File(path+"\\Contatti"+"\\mail_Monaco.xls");
 			sender.sendEmail(message, contactsFile);
 		} catch (MessagingException e) {
 			// TODO Auto-generated catch block
